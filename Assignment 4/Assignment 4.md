@@ -96,7 +96,7 @@ u(unique(dirichlet)) = exp(sum(coordinates(unique(dirichlet),:),2));
 
 
 
-<img src="D:\Project\MATLAB\工业有限元\ZJU-Personal-Course\Assignment 4\image\误差分析.png" alt="误差分析" width="600" height="400">
+<img src="D:\Project\MATLAB\工业有限元\ZJU-Personal-Course\Assignment 4\image\误差分析.png" alt="误差分析" width="600" height="250">
 
 <center>图2 三维有限元误差分析</center>
 

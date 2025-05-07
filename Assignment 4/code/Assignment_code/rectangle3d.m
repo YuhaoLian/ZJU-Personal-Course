@@ -11,7 +11,6 @@ X = zeros(2*nx*ny*nz, 1);
 Y = zeros(2*nx*ny*nz, 1);
 Z = zeros(2*nx*ny*nz, 1);
 
-% Generate vertex points
 for l = 1:nz
     for k = 1:ny
         for j = 1:nx
@@ -23,7 +22,6 @@ for l = 1:nz
     end
 end
 
-% Generate midpoints
 for l = 1:nz-1
     for k = 1:ny-1
         for j = 1:nx-1
@@ -39,11 +37,7 @@ tri = delaunayTriangulation([X(1:np), Y(1:np), Z(1:np)]);
 coordinates = tri.Points;
 eb = tri.freeBoundary;
 
-% All boundaries are Dirichlet
-dirichlet = eb;
-neumann = [];
-
-% Save mesh files
+% 所有边界设为Dirichlet
 fid = fopen('coordinates.dat', 'w');
 fprintf(fid, '%24.14e %24.14e %24.14e\n', coordinates');
 fclose(fid);
@@ -53,10 +47,9 @@ fprintf(fid, '%8d %8d %8d %8d\n', tri.ConnectivityList');
 fclose(fid);
 
 fid = fopen('dirichlet.dat', 'w');
-fprintf(fid, '%8d %8d %8d\n', dirichlet');
+fprintf(fid, '%8d %8d %8d\n', eb');
 fclose(fid);
 
 fid = fopen('neumann.dat', 'w');
-fprintf(fid, '%8d %8d %8d\n', neumann');
-fclose(fid);
+fclose(fid); % 空文件
 end
